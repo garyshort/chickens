@@ -233,7 +233,7 @@ namespace ChickenCounter
         }
 
         /// <summary>
-        /// Remove a cluster if it's size is less than threshold
+        /// Remove a cluster if its size is less than threshold
         /// </summary>
         /// <param name="noiseThreshold">The threshold</param>
         private static void CullNoiseClusters(int noiseThreshold)
@@ -243,7 +243,7 @@ namespace ChickenCounter
         }
 
         /// <summary>
-        /// Walk each pixel in the binary image and cluter it
+        /// Walk each pixel in the binary image and cluster it
         /// </summary>
         /// <param name="binImage">The image to walk</param>
         private static void ClusterAllPoints(Bitmap binImage)
@@ -283,9 +283,9 @@ namespace ChickenCounter
         }
 
         /// <summary>
-        /// Use a KNN algorithm - with a hueristic function 
+        /// Use a KNN algorithm - with a heuristic function 
         /// to dynamically amend K as we progress - to cluster
-        /// a give point
+        /// a given point
         /// </summary>
         /// <param name="p">the point to cluster</param>
         private static void ClusterPoint(Point p)
@@ -322,14 +322,14 @@ namespace ChickenCounter
                     }
                 });
 
-                // After voting if there's a chosen cluster, add the point
+                // After voting, if there's a chosen cluster, add the point
                 if (chosenCluster != null)
                 {
                     chosenCluster.Add(p);
                 }
                 else
                 {
-                    // There's no close clusters, so start a new one
+                    // There are no close clusters, so start a new one
                     List<Point> l = new List<Point>();
                     l.Add(p);
                     Clusters.Add(l);
@@ -406,7 +406,7 @@ namespace ChickenCounter
         }
 
         /// <summary>
-        /// Use Otsu's Method to answers the threshold that maximises 
+        /// Use Otsu's Method to answer the threshold that maximises 
         /// the inter-class difference between background and foreground 
         /// on a grayscale histogram
         /// </summary>
@@ -433,8 +433,8 @@ namespace ChickenCounter
             float sumOfIntensities = 0;
             for (int t = 0; t < 256; t++) sumOfIntensities += t * histogram[t];
 
-            // Exhaustively interate each threshold to find the one that maiximizes the
-            // intra class difference
+            // Exhaustively iterate through each threshold until we
+            // find the one that maximizes the intra class difference
             float sumOfBackgroundIntensities = 0;
             int backgroundWeight = 0;
             int foregroundWeight = 0;
@@ -516,7 +516,7 @@ namespace ChickenCounter
                 GraphicsUnit.Pixel,
                 attributes);
 
-            // Dispose the Graphics object
+            // Dispose of the Graphics object
             g.Dispose();
             return newBitmap;
         }
